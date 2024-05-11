@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // baseUrl：指定了模块解析的基本路径。在这里，. 表示基本路径为当前目录
+    "paths": { // paths 相对于 baseUrl 进行解析
+      "@components/*": ["src/components/*"], // @components/* 表示以 src/components/ 开头的路径可以使用 @components/ 来引用。
+      "@src/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@api/*": ["src/api/*"],
+    }
+  },
+  "exclude": ["node_module"]
+}
+

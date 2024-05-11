@@ -1,0 +1,16 @@
+node_modules
+*.md
+.vscode
+.idea
+dist
+public
+docs
+.husky
+.local
+/bin
+Dockerfile
+.eslintrc.js
+config
+babel.config.js
+postcss.config.js
+uno.config.js
