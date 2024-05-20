@@ -1,25 +1,49 @@
 <template>
   <div class="hello">
-    hello
-    <HelloSpan></HelloSpan>
+    <el-button
+      v-for="item of list"
+      :key="item.key"
+      @click="_changeThemeColor(item.key)"
+    >
+      {{ item.key }}
+    </el-button>
   </div>
 </template>
 
 <script>
-import HelloSpan from './hello1.vue'
+import { changeThemeColor } from '../utils/themeColorClient'
 
 export default {
   name: 'hello-word',
-  components: {
-    HelloSpan
-  },
   data() {
-    // 这里存放数据
-    return {}
+    return {
+      list: [
+        {
+          key: '#F5222D'
+        },
+        {
+          key: '#FA541C'
+        },
+        {
+          key: '#FAAD14'
+        },
+        {
+          key: '#13C2C2'
+        },
+        {
+          key: '#52C41A'
+        },
+        {
+          key: '#f60'
+        }
+      ]
+    }
   },
-  // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
-  methods: {}
+  methods: {
+    _changeThemeColor(color) {
+      changeThemeColor(color)
+    }
+  }
 }
 </script>
-<style lang="scss" scoped></style>

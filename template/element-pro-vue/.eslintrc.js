@@ -24,6 +24,8 @@ module.exports = {
   // "warn" 或 1 - 打开规则作为警告（出现黄色波浪线不影响退出代码）
   // "error" 或 2 - 打开规则作为错误（出现红色波浪线触发时退出代码为 1）
   rules: {
+    'import/no-extraneous-dependencies': 'off',
+    'import/order': 'off',
     'import/prefer-default-export': 'off',
     'no-shadow': "off",
     'no-underscore-dangle': "off",

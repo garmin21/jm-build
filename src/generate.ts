@@ -4,14 +4,17 @@ import createSpawnCmd from './utils/createSpawnCmd';
 import clearConsole from './utils/clearConsole';
 import * as fs from 'fs-extra';
 import chalk = require('chalk');
+import ora from 'ora';
 
 let startTime: number, endTime: number;
 
 // 1. 我们要询问用户，你是使用 vue2 + element-ui 的开发用户吗？
-
 // 2. 我们将 copy 字典中命中的模块
 
 export default async function (name: string): Promise<void> {
+  console.log(chalk.rgb(216, 27, 96)('\n 😈😈😈  雷猴啊, 靓仔~~'))
+  console.log(chalk.cyanBright(' 🦄🦄🦄  靓仔正在使用 jm-build 命令行工具...\n'))
+
   const templateName = 'element-pro-vue';
   options.src = path.resolve(__dirname, '../template/' + templateName);
 
@@ -25,10 +28,18 @@ export default async function (name: string): Promise<void> {
 
   startTime = new Date().getTime();
 
-  console.log(`> 正在生成项目目录，请稍等...`);
-  
-  await fs.copy(options.src, options.dest);
+  const spinner = ora({
+    text: '正在生成项目模板...',
+    color: 'yellow',
+    spinner: {
+      interval: 80,
+      frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'],
+    },
+  });
+  spinner.start();
 
+  await fs.copy(options.src, options.dest);
+  spinner.stop()
   console.log(`> 项目模板生成于目录: ${chalk.blue(options.dest)}`);
   // Git 初始化
   await cmdIgnore('git', ['init']);

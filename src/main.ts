@@ -11,8 +11,9 @@ async function setup() {
   program.version(options.version).usage('<command> [options]');
 
   program
-    .command('create <app-name>')
-    .description('创建项目')
+    .command('create <projectName>')
+    .description('用于创建一个项目模板')
+    // .option('-T, --template [template]', '输入使用的模板名字')
     .action(async (projectName) => {
       await hasDir(projectName);
       generate(projectName);

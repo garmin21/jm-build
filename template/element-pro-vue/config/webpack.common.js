@@ -2,9 +2,9 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { DefinePlugin } = require('webpack');
+const createThemeColorReplacerPlugin = require('../plugin/plugin.config')
 const { _resolve } = require('./utils/path');
 const { merge } = require('webpack-merge');
 const rulesConfig = require('./webpack.rules.js');
@@ -65,6 +65,7 @@ const baseConfig = {
     }),
     new DefinePlugin(env),
     IS_ANALYZER ? new BundleAnalyzerPlugin() : undefined,
+    createThemeColorReplacerPlugin()
   ],
   cache: {
     // 使用持久化缓存
